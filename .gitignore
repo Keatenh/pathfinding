@@ -1,0 +1,4 @@
+local
+.vscode
+__pycache__
+*.pyc

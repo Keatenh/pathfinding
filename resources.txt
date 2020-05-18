@@ -1,0 +1,5 @@
+https://dev.to/mxl/dijkstras-algorithm-in-python-algorithms-for-beginners-dkc
+https://rosettacode.org/wiki/Dijkstra%27s_algorithm#Python
+https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Pseudocode
+https://networkx.github.io/documentation/networkx-1.10/tutorial/tutorial.html#what-to-use-as-nodes-and-edges
+https://stackoverflow.com/questions/31085231/set-dynamic-node-shape-in-network-with-matplotlib/36771282
