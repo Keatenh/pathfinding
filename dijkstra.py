@@ -109,7 +109,12 @@ for n in node_list:
     for o in n["origins"]:
         content.append((o,n["name"],get_node_details(n["kind"])["weight"]))
 graph = Graph(content)
-# TODO: given all starts and end, what is the shortest overall path?
+result = ()
+starts = [d["name"] for d in list(filter(lambda d: d["kind"]=="start",node_list))]
+end = [d["name"] for d in list(filter(lambda d: d["kind"]=="end",node_list))][0]
+for start in starts:
+    dij = graph.dijkstra(start, end)
+    if result is () or dij[-1] < result[-1]:
+        result = dij
 # TODO: plot resultant path in another color
-print(graph.dijkstra("A0", "H2"))
-print(graph.dijkstra("A3", "H2"))
+print("result:",result)
