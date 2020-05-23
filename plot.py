@@ -1,5 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import dijkstra
 from tome_iii_lvl_i import node_list
 from node import get_node_details
 # G = nx.Graph()
@@ -17,7 +18,7 @@ edges = []
 # G.add_nodes_from([n["name"] for n in node_list])
 for n in node_list:
     G.add_node(n["name"],s=get_node_details(n["kind"])["style"])
-edges = set_edges(node_list)
+edges = set_edges(node_list) #list of tuples
 G.add_edges_from(edges)
 # G.add_edges_from([("A0","B0"),("B0","C0"),("C0","D0")])
 for node in node_list:
@@ -44,6 +45,10 @@ nx.draw_networkx_labels(G,pos,font_size=8, font_weight="bold", font_family="mono
 # limits=plt.axis('on') # turns on axis
 # ax.tick_params(left=True, bottom=True, labelleft=True, labelbottom=True)
 
-
+path1 = dijkstra.run()
+path1_edges = []
+for i in range(len(path1)-1):
+    path1_edges.append((path1[i],path1[i+1]))
+nx.draw_networkx_edges(G, pos, edgelist=path1_edges, edge_color='r', arrows=True)
 plt.show()
 

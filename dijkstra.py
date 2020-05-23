@@ -1,6 +1,8 @@
 from collections import deque, namedtuple
 from node import get_node_details
 from tome_iii_lvl_i import node_list
+# TODO: remove duplications with imports
+
 
 # we'll use infinity as a default distance to nodes.
 inf = float('inf')
@@ -103,18 +105,18 @@ class Graph:
 #     ("b", "d", 15), ("c", "d", 11), ("c", "f", 2),  ("d", "e", 6),
 #     ("e", "f", 9), ("f", "e", 9)])
 # print(graph.dijkstra("a", "e"))
-
-content = []
-for n in node_list:
-    for o in n["origins"]:
-        content.append((o,n["name"],get_node_details(n["kind"])["weight"]))
-graph = Graph(content)
-result = ()
-starts = [d["name"] for d in list(filter(lambda d: d["kind"]=="start",node_list))]
-end = [d["name"] for d in list(filter(lambda d: d["kind"]=="end",node_list))][0]
-for start in starts:
-    dij = graph.dijkstra(start, end)
-    if result is () or dij[-1] < result[-1]:
-        result = dij
-# TODO: plot resultant path in another color
-print("result:",result)
+def run():
+    content = []
+    for n in node_list:
+        for o in n["origins"]:
+            content.append((o,n["name"],get_node_details(n["kind"])["weight"]))
+    graph = Graph(content)
+    result = ()
+    starts = [d["name"] for d in list(filter(lambda d: d["kind"]=="start",node_list))]
+    end = [d["name"] for d in list(filter(lambda d: d["kind"]=="end",node_list))][0]
+    for start in starts:
+        dij = graph.dijkstra(start, end)
+        if result is () or dij[-1] < result[-1]:
+            result = dij
+    print("result:",result)
+    return list(result[0])
